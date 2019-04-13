@@ -65,8 +65,8 @@ class Shape: Actor {
         super.init(coder: aDecoder)
     }
     
-    override func update() {
-        super.update()
+    override func update(currentTime: TimeInterval) {
+        super.update(currentTime: currentTime)
         print("Hello")
         if self.position.y > windowSize.height
         {

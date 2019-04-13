@@ -37,7 +37,12 @@ class GameScene: SKScene {
 
     }
     override func update(_ currentTime: TimeInterval) {
-        <#code#>
+        for node in self.children {
+            if node is Actor{
+                let actor = node as! Actor
+                actor.update(currentTime: currentTime)
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
