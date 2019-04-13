@@ -17,6 +17,8 @@ class GameScene: SKScene {
     var SpawnLocationB : SKNode?
     var SpawnLocationC : SKNode?
     
+    var shape: Shape?
+    
     
     override func sceneDidLoad() {
         //Modify Gravity
@@ -34,6 +36,33 @@ class GameScene: SKScene {
         addChild(Spawner!)
 
     }
+    override func update(_ currentTime: TimeInterval) {
+        <#code#>
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch: UITouch = touches.first!
+        let node = self.nodes(at: touch.location(in: self)).first //Get first node in array.
+        if node is Shape {
+            shape = node as? Shape
+            shape?.removeAllActions()
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if shape != nil {
+            let touch: UITouch = touches.first!
+            shape?.position = touch.location(in: self)
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        shape?.removeFromParent()
+        shape = nil
+    }
+    
+    
+    
     
     
 }

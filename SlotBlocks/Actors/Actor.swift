@@ -20,7 +20,7 @@ class Actor: SKSpriteNode {
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
     }
     
-    func update() -> Void {
+    func update(currentTime: TimeInterval) -> Void {
         return
     }
 }

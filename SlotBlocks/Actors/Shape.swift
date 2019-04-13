@@ -16,6 +16,10 @@ enum Shapes: Int {
 }
 class Shape: Actor {
     
+    public var movementSpeed : CGFloat = -50
+    
+    private var windowSize : CGRect
+    
     var currentShape : Shapes = .Square {
         didSet{
             switch currentShape {
@@ -36,16 +40,38 @@ class Shape: Actor {
         }
     }
     
+    
     override init(imageName: String) {
+        windowSize = UIScreen.main.bounds
         super.init(imageName: imageName)
         
-        self.physicsBody = SKPhysicsBody(texture: texture!, size: texture!.size())
-        self.physicsBody?.affectedByGravity = true;
+        print(windowSize.height)
+        
+        
+        
+        self.physicsBody = SKPhysicsBody(texture: texture!, size: CGSize(width: texture!.size().width / 6, height: texture!.size().height / 6))
+        self.physicsBody?.affectedByGravity = false;
+        self.physicsBody?.allowsRotation = false
+        
+        let moveAction = SKAction.moveBy(x: 0, y: movementSpeed, duration: 0.1)
+        let sequence = SKAction.repeatForever(moveAction)
+        
+        run(sequence)
 
     }
     
     required init?(coder aDecoder: NSCoder) {
+        windowSize = UIScreen.main.bounds
         super.init(coder: aDecoder)
+    }
+    
+    override func update() {
+        super.update()
+        print("Hello")
+        if self.position.y > windowSize.height
+        {
+            self.removeFromParent()
+        }
     }
     
 }
