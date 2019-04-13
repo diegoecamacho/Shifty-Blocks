@@ -25,7 +25,7 @@ class MainMenuScene: SKScene {
         playButton = playMenuButton
         playButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         playButton?.AddCallback (callback:{
-            let gameScene = GameScene(fileNamed: "GameScene")
+            let gameScene = Level1Scene(fileNamed: "GameScene")
             gameScene?.scaleMode = .aspectFill
             self.view!.presentScene(gameScene)
         })

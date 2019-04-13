@@ -9,16 +9,27 @@
 import Foundation
 import SpriteKit
 
-enum Shapes: Int {
+public enum Shapes: Int {
     case Square = 0,
-     Circle = 1,
-     Triangle = 2
+    Circle = 1,
+    Triangle = 2
 }
+
+public enum Colors: Int {
+    case None = 0,
+    Blue = 1,
+    Red = 2,
+    Green = 3
+}
+
+
 class Shape: Actor {
     
     public var movementSpeed : CGFloat = -50
     
     private var windowSize : CGRect
+    
+    var currentColor : Colors = .None
     
     var currentShape : Shapes = .Square {
         didSet{
@@ -53,6 +64,10 @@ class Shape: Actor {
         self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.allowsRotation = false
         
+        self.physicsBody?.categoryBitMask = ShapeCategory
+        self.physicsBody?.collisionBitMask = DefaultCategory
+       
+        
         let moveAction = SKAction.moveBy(x: 0, y: movementSpeed, duration: 0.1)
         let sequence = SKAction.repeatForever(moveAction)
         
@@ -67,11 +82,10 @@ class Shape: Actor {
     
     override func update(currentTime: TimeInterval) {
         super.update(currentTime: currentTime)
-        print("Hello")
-        if self.position.y > windowSize.height
-        {
-            self.removeFromParent()
-        }
+       if self.position.y < 0 - (windowSize.height + texture!.size().height / 6)
+       {
+           self.removeFromParent()
+       }
     }
     
 }

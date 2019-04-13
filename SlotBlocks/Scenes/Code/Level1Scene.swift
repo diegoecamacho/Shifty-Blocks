@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class Level1Scene: SKScene, SKPhysicsContactDelegate {
     
     var Spawner : ShapeSpawner?
     
@@ -17,8 +17,15 @@ class GameScene: SKScene {
     var SpawnLocationB : SKNode?
     var SpawnLocationC : SKNode?
     
+    var Slot1 : Slots?
+    var Slot2 : Slots?
+    var Slot3 : Slots?
+    
     var shape: Shape?
     
+    override func didMove(to view: SKView) {
+        self.physicsWorld.contactDelegate = self
+    }
     
     override func sceneDidLoad() {
         //Modify Gravity
@@ -27,6 +34,14 @@ class GameScene: SKScene {
         SpawnLocationA = childNode(withName: "SpawnPointA")
         SpawnLocationB = childNode(withName: "SpawnPointB")
         SpawnLocationC = childNode(withName: "SpawnPointC")
+        
+        Slot1 = childNode(withName: "SquareSlot") as? Slots
+        Slot2 = childNode(withName: "TriangleSlot") as? Slots
+        Slot3 = childNode(withName: "CircleSlot") as? Slots
+        
+        Slot1?.Initialize(detectedShape: .Square, colorDetected: .None)
+        Slot2?.Initialize(detectedShape: .Triangle, colorDetected: .None)
+        Slot3?.Initialize(detectedShape: .Circle, colorDetected: .None)
         
         Spawner = ShapeSpawner(scene: self)
         Spawner?.AddSpawnerLocation(location: SpawnLocationA!)
@@ -42,6 +57,16 @@ class GameScene: SKScene {
                 let actor = node as! Actor
                 actor.update(currentTime: currentTime)
             }
+        }
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let collision : UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        if collision == ShapeCategory | SlotCategory {
+            let slot: Slots = contact.bodyA.node! as! Slots
+            let shape: Shape = contact.bodyB.node! as! Shape
+            slot.ReceiveShape(shape: shape)
         }
     }
     
