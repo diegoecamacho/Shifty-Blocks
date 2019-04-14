@@ -12,27 +12,28 @@ import SpriteKit
 
 class Slots: Actor {
     var acceptedShape : Shapes = .Square
-    {
-        didSet{
-            switch acceptedShape {
-            case .Square:
-                let tempTexture = SKTexture(imageNamed: "SquareSlot")
-                texture = tempTexture
-                break
-            case .Circle:
-                let tempTexture = SKTexture(imageNamed: "CircleSlot")
-                texture = tempTexture
-                break
-            case .Triangle:
-                let tempTexture = SKTexture(imageNamed: "TriangleSlot")
-                texture = tempTexture
-                break
-            }
-            
-        }
-    }
+   //{
+   //    didSet{
+   //        switch acceptedShape {
+   //        case .Square:
+   //            let tempTexture = SKTexture(imageNamed: "SquareSlot")
+   //            texture = tempTexture
+   //            break
+   //        case .Circle:
+   //            let tempTexture = SKTexture(imageNamed: "CircleSlot")
+   //            texture = tempTexture
+   //            break
+   //        case .Triangle:
+   //            let tempTexture = SKTexture(imageNamed: "TriangleSlot")
+   //            texture = tempTexture
+   //            break
+   //        }
+   //
+   //    }
+   //}
     
-    var acceptedColor : Colors = .None
+    var currentColor = 0
+    var acceptedColor : Colors = .Blue
     {
         didSet{
             switch acceptedColor {
@@ -48,16 +49,13 @@ class Slots: Actor {
                 let tempTexture = SKTexture(imageNamed: "\(acceptedShape)" + "_SLOT_RED")
                 texture = tempTexture
                 break
-            case .None:
-                break
-            }
         }
+      }
     }
 
     public func Initialize(detectedShape : Shapes, colorDetected : Colors) -> Void {
-        
-        print("iNIT")
-        self.physicsBody = SKPhysicsBody(texture: texture!, size: CGSize(width: texture!.size().width / 6 , height: texture!.size().height / 6))
+    
+        self.physicsBody = SKPhysicsBody(texture: texture!, size: CGSize(width: texture!.size().width / 5 , height: texture!.size().height / 5))
         self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.allowsRotation = false
         
@@ -78,7 +76,14 @@ class Slots: Actor {
                 }
             }
         }
-        
+    }
+    
+    public func ChangeColor(){
+        currentColor += 1
+        if currentColor >= 3 {
+            currentColor = 0
+        }
+        acceptedColor = Colors(rawValue: currentColor)!
     }
     
     

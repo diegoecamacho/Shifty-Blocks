@@ -39,9 +39,9 @@ class GameplayController : SKNode{
     
     private func SpawnShape() -> Void{
         let shape = shapeSpawner!.SpawnShape()
-        let slot = SlotsDictionary[shape.currentShape]
+        //let slot = SlotsDictionary[shape.currentShape]
         
-        slot?.acceptedColor = shape.currentColor
+        //slot?.acceptedColor = shape.currentColor
     }
     
     public func AddSpawnerLocation(location : SKNode){

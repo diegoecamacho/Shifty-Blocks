@@ -38,9 +38,9 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
         let Slot2 = childNode(withName: "TriangleSlot") as? Slots
         let Slot3 = childNode(withName: "CircleSlot") as? Slots
         
-        Slot1?.Initialize(detectedShape: .Square, colorDetected: .None)
-        Slot2?.Initialize(detectedShape: .Triangle, colorDetected: .None)
-        Slot3?.Initialize(detectedShape: .Circle, colorDetected: .None)
+        Slot1?.Initialize(detectedShape: .Square, colorDetected: .Red)
+        Slot2?.Initialize(detectedShape: .Triangle, colorDetected: .Red)
+        Slot3?.Initialize(detectedShape: .Circle, colorDetected: .Red)
         
         gameplayController?.AddSlot(slot: Slot1!)
         gameplayController?.AddSlot(slot: Slot2!)
@@ -86,6 +86,12 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
             shape = node as? Shape
             shape?.IsClicked = true
             shape?.removeAllActions()
+        }
+        else {
+            if node is Slots{
+                var slot = node as? Slots
+                slot?.ChangeColor()
+            }
         }
     }
     
