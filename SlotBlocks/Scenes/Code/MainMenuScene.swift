@@ -17,11 +17,21 @@ class MainMenuScene: SKScene {
     var highScoreButton : MenuButton?
     var settingsButton : MenuButton?
     var helpButton : MenuButton?
+    var music : SKAudioNode?
     
     
     override func sceneDidLoad() {
         InitializeButtons()
     }
+    override func didMove(to view: SKView) {
+        let menuMusic = SKAudioNode(fileNamed: "/Sounds/menuMusic.mp3")
+        //  menuMusic.run(SKAction.changeVolume(to: 1, duration: 0))
+        menuMusic.autoplayLooped = true
+        addChild(menuMusic)
+        music = menuMusic
+        
+    }
+
     
     fileprivate func InitializeButtons(){
         guard let playMenuButton = childNode(withName: "PlayButton") as? MenuButton else { return }

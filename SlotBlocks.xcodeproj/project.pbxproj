@@ -41,6 +41,11 @@
 /* Begin PBXFileReference section */
 		1625AE8D2263D751005F0D5E /* HelpMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenu.swift; sourceTree = "<group>"; };
 		1625AE8F2263D772005F0D5E /* HelpMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HelpMenu.sks; sourceTree = "<group>"; };
+		16A004842263EE3200C16A58 /* buttonClick_Sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buttonClick_Sound.wav; sourceTree = "<group>"; };
+		16A004852263EE3200C16A58 /* strike_Sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = strike_Sound.wav; sourceTree = "<group>"; };
+		16A004862263EE3200C16A58 /* scorePoint_Sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = scorePoint_Sound.wav; sourceTree = "<group>"; };
+		16A004872263EE3300C16A58 /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic.mp3; sourceTree = "<group>"; };
+		16A004882263EE3300C16A58 /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
 		1E0AF71A22372748005E6573 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		1E0AF71C22372E41005E6573 /* ButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonController.swift; sourceTree = "<group>"; };
 		1E3769DD2237093D00FFC817 /* SlotBlocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlotBlocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +88,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16A004792263ED9B00C16A58 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				16A004842263EE3200C16A58 /* buttonClick_Sound.wav */,
+				16A004872263EE3300C16A58 /* gameMusic.mp3 */,
+				16A004882263EE3300C16A58 /* menuMusic.mp3 */,
+				16A004862263EE3200C16A58 /* scorePoint_Sound.wav */,
+				16A004852263EE3200C16A58 /* strike_Sound.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		1E0AF712223723C8005E6573 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +167,7 @@
 		1E3769DF2237093D00FFC817 /* SlotBlocks */ = {
 			isa = PBXGroup;
 			children = (
+				16A004792263ED9B00C16A58 /* Sounds */,
 				1E3769E02237093D00FFC817 /* AppDelegate.swift */,
 				1E3769E42237093D00FFC817 /* Actions.sks */,
 				1EBEB3C8223842370039A140 /* Gameplay */,
