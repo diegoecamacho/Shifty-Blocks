@@ -24,8 +24,6 @@
 		1EBEB3C52238379E0039A140 /* Slots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBEB3C42238379E0039A140 /* Slots.swift */; };
 		1EBEB3C7223837C40039A140 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBEB3C6223837C40039A140 /* Shape.swift */; };
 		1EBEB3CB223842590039A140 /* ShapeSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBEB3CA223842590039A140 /* ShapeSpawner.swift */; };
-		CE000D0C226267AA000B548C /* CollisionLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE000D0B226267AA000B548C /* CollisionLayers.swift */; };
-		CE000D112263B24B000B548C /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE000D102263B24B000B548C /* GameManager.swift */; };
 		CE000D162263BD14000B548C /* DifficultyMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE000D122263BD13000B548C /* DifficultyMenu.sks */; };
 		CE000D172263BD14000B548C /* HighScores.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE000D132263BD13000B548C /* HighScores.sks */; };
 		CE000D182263BD14000B548C /* SettingsMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE000D142263BD14000B548C /* SettingsMenu.sks */; };
@@ -36,6 +34,8 @@
 		CE000D212263BD61000B548C /* ResultsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE000D1D2263BD61000B548C /* ResultsScreen.swift */; };
 		CE000D232263BF7C000B548C /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE000D222263BF7C000B548C /* MainMenuScene.sks */; };
 		CE000D272263D902000B548C /* GameplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE000D262263D902000B548C /* GameplayController.swift */; };
+		CEC1209E2263FDEF00E961F6 /* CollisionLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1209D2263FDEF00E961F6 /* CollisionLayers.swift */; };
+		CEC120A02263FEEB00E961F6 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1209F2263FEEB00E961F6 /* GameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,8 +63,6 @@
 		1EBEB3C42238379E0039A140 /* Slots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slots.swift; sourceTree = "<group>"; };
 		1EBEB3C6223837C40039A140 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		1EBEB3CA223842590039A140 /* ShapeSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSpawner.swift; sourceTree = "<group>"; };
-		CE000D0B226267AA000B548C /* CollisionLayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionLayers.swift; sourceTree = "<group>"; };
-		CE000D102263B24B000B548C /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		CE000D122263BD13000B548C /* DifficultyMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DifficultyMenu.sks; sourceTree = "<group>"; };
 		CE000D132263BD13000B548C /* HighScores.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HighScores.sks; sourceTree = "<group>"; };
 		CE000D142263BD14000B548C /* SettingsMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SettingsMenu.sks; sourceTree = "<group>"; };
@@ -75,6 +73,8 @@
 		CE000D1D2263BD61000B548C /* ResultsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsScreen.swift; sourceTree = "<group>"; };
 		CE000D222263BF7C000B548C /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
 		CE000D262263D902000B548C /* GameplayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayController.swift; sourceTree = "<group>"; };
+		CEC1209D2263FDEF00E961F6 /* CollisionLayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollisionLayers.swift; path = SlotBlocks/CollisionLayers.swift; sourceTree = SOURCE_ROOT; };
+		CEC1209F2263FEEB00E961F6 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +149,6 @@
 		1E3769D42237093D00FFC817 = {
 			isa = PBXGroup;
 			children = (
-				CE000D102263B24B000B548C /* GameManager.swift */,
 				CE000D0A22626784000B548C /* Physics */,
 				1E3769DF2237093D00FFC817 /* SlotBlocks */,
 				1E3769DE2237093D00FFC817 /* Products */,
@@ -207,6 +206,7 @@
 			children = (
 				1EBEB3C9223842480039A140 /* Spawner */,
 				CE000D262263D902000B548C /* GameplayController.swift */,
+				CEC1209F2263FEEB00E961F6 /* GameManager.swift */,
 			);
 			name = Gameplay;
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 		CE000D0A22626784000B548C /* Physics */ = {
 			isa = PBXGroup;
 			children = (
-				CE000D0B226267AA000B548C /* CollisionLayers.swift */,
+				CEC1209D2263FDEF00E961F6 /* CollisionLayers.swift */,
 			);
 			path = Physics;
 			sourceTree = "<group>";
@@ -314,9 +314,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE000D212263BD61000B548C /* ResultsScreen.swift in Sources */,
+				CEC120A02263FEEB00E961F6 /* GameManager.swift in Sources */,
 				1E3769E72237093D00FFC817 /* Level1Scene.swift in Sources */,
-				CE000D112263B24B000B548C /* GameManager.swift in Sources */,
 				1625AE8E2263D751005F0D5E /* HelpMenu.swift in Sources */,
+				CEC1209E2263FDEF00E961F6 /* CollisionLayers.swift in Sources */,
 				CE000D1F2263BD61000B548C /* HighScores.swift in Sources */,
 				1E3769E92237093D00FFC817 /* GameViewController.swift in Sources */,
 				1E0AF71B22372748005E6573 /* MenuButton.swift in Sources */,
@@ -329,7 +330,6 @@
 				1E3769E12237093D00FFC817 /* AppDelegate.swift in Sources */,
 				1E3769FD22370F5200FFC817 /* Actor.swift in Sources */,
 				1EBEB3CB223842590039A140 /* ShapeSpawner.swift in Sources */,
-				CE000D0C226267AA000B548C /* CollisionLayers.swift in Sources */,
 				1E0AF71D22372E41005E6573 /* ButtonController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
