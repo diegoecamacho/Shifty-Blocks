@@ -16,6 +16,7 @@ class MainMenuScene: SKScene {
     var playButton : MenuButton?
     var highScoreButton : MenuButton?
     var settingsButton : MenuButton?
+    var helpButton : MenuButton?
     
     
     override func sceneDidLoad() {
@@ -48,10 +49,18 @@ class MainMenuScene: SKScene {
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
         }
+        guard let helpMenuButton = childNode(withName: "HelpButton") as? MenuButton else {return}
+        helpButton = helpMenuButton
+        helpButton?.AddCallback {
+            let nextScene = SettingsMenu(fileNamed: "HelpMenu")
+            nextScene?.scaleMode = .aspectFill
+            self.view!.presentScene(nextScene)
+        }
         
         menuController.AddButton(menuButton: playButton!)
         menuController.AddButton(menuButton: highScoreButton!)
         menuController.AddButton(menuButton: settingsButton!)
+        menuController.AddButton(menuButton: helpButton!)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
