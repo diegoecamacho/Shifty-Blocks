@@ -33,6 +33,7 @@
 		CE000D202263BD61000B548C /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE000D1C2263BD60000B548C /* SettingsMenu.swift */; };
 		CE000D212263BD61000B548C /* ResultsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE000D1D2263BD61000B548C /* ResultsScreen.swift */; };
 		CE000D232263BF7C000B548C /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE000D222263BF7C000B548C /* MainMenuScene.sks */; };
+		CE000D272263D902000B548C /* GameplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE000D262263D902000B548C /* GameplayController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		CE000D1C2263BD60000B548C /* SettingsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
 		CE000D1D2263BD61000B548C /* ResultsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsScreen.swift; sourceTree = "<group>"; };
 		CE000D222263BF7C000B548C /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
+		CE000D262263D902000B548C /* GameplayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				1EBEB3C9223842480039A140 /* Spawner */,
+				CE000D262263D902000B548C /* GameplayController.swift */,
 			);
 			name = Gameplay;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				1E3769E92237093D00FFC817 /* GameViewController.swift in Sources */,
 				1E0AF71B22372748005E6573 /* MenuButton.swift in Sources */,
 				1EBEB3C52238379E0039A140 /* Slots.swift in Sources */,
+				CE000D272263D902000B548C /* GameplayController.swift in Sources */,
 				CE000D202263BD61000B548C /* SettingsMenu.swift in Sources */,
 				CE000D1E2263BD61000B548C /* DifficultyMenu.swift in Sources */,
 				1EBEB3C7223837C40039A140 /* Shape.swift in Sources */,

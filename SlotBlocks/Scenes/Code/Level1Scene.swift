@@ -11,15 +11,7 @@ import GameplayKit
 
 class Level1Scene: SKScene, SKPhysicsContactDelegate {
     
-    var Spawner : ShapeSpawner?
-    
-    var SpawnLocationA : SKNode?
-    var SpawnLocationB : SKNode?
-    var SpawnLocationC : SKNode?
-    
-    var Slot1 : Slots?
-    var Slot2 : Slots?
-    var Slot3 : Slots?
+    var gameplayController : GameplayController?
     
     var shape: Shape?
     
@@ -32,32 +24,28 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func sceneDidLoad() {
-        //Modify Gravity
-        physicsWorld.gravity = CGVector(dx: 0, dy: -4)
         
-        SpawnLocationA = childNode(withName: "SpawnPointA")
-        SpawnLocationB = childNode(withName: "SpawnPointB")
-        SpawnLocationC = childNode(withName: "SpawnPointC")
+        gameplayController = GameplayController(scene: self)
+        
+        gameplayController?.AddSpawnerLocation(location: childNode(withName: "SpawnPointA")!)
+        gameplayController?.AddSpawnerLocation(location: childNode(withName: "SpawnPointB")!)
+        gameplayController?.AddSpawnerLocation(location: childNode(withName: "SpawnPointC")!)
         
         scoreText = childNode(withName: "Score") as? SKLabelNode
         multiplerText = childNode(withName: "Multiplier") as? SKLabelNode
         
-        Slot1 = childNode(withName: "SquareSlot") as? Slots
-        Slot2 = childNode(withName: "TriangleSlot") as? Slots
-        Slot3 = childNode(withName: "CircleSlot") as? Slots
+        let Slot1 = childNode(withName: "SquareSlot") as? Slots
+        let Slot2 = childNode(withName: "TriangleSlot") as? Slots
+        let Slot3 = childNode(withName: "CircleSlot") as? Slots
         
         Slot1?.Initialize(detectedShape: .Square, colorDetected: .None)
         Slot2?.Initialize(detectedShape: .Triangle, colorDetected: .None)
         Slot3?.Initialize(detectedShape: .Circle, colorDetected: .None)
-
         
-        Spawner = ShapeSpawner(scene: self, difficulty: GameManager.Instance.GameSpeedMultiplier)
-        Spawner?.AddSpawnerLocation(location: SpawnLocationA!)
-        Spawner?.AddSpawnerLocation(location: SpawnLocationB!)
-        Spawner?.AddSpawnerLocation(location: SpawnLocationC!)
+        gameplayController?.AddSlot(slot: Slot1!)
+        gameplayController?.AddSlot(slot: Slot2!)
+        gameplayController?.AddSlot(slot: Slot3!)
         
-        addChild(Spawner!)
-
     }
     override func update(_ currentTime: TimeInterval) {
         for node in self.children {

@@ -13,6 +13,8 @@ class ShapeSpawner : SKNode {
     var timeElapsed : Double = 0.0
     public var nextSpawnIn = 100.0
     
+    public var LatestSpawn : Shapes = .Circle
+    
     var SpawnLocation : [SKNode] = []
     
     var spawnerScene : SKScene?
@@ -46,10 +48,11 @@ class ShapeSpawner : SKNode {
         SpawnLocation.append(location)
     }
     
-    func SpawnShape(){
+    public func SpawnShape(){
         let randomLocation = SpawnLocation.randomElement()
        let shape =  Shape(imageName: "SquareShape")
-        shape.currentShape = Shapes(rawValue: Int.random(in: 0 ..< 3))!
+        LatestSpawn = Shapes(rawValue: Int.random(in: 0 ..< 3))!
+        shape.currentShape = LatestSpawn
         shape.SetSpeed(shapeDifficulty: CGFloat(Difficulty))
        shape.size = CGSize(width: 200, height: 200)
        shape.position = (randomLocation?.position)!

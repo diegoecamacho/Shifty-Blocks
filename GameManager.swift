@@ -36,6 +36,7 @@ class GameManager {
     public func IncreaseScore(){
         ConsecutiveHits += 1
         MultiplerHits += 1
+        CurrentFails = 0
         
         if MultiplerHits >= RatioIncreaseEvery {
             MultiplierRatio += 1
@@ -49,6 +50,11 @@ class GameManager {
         ConsecutiveHits = 0
         CurrentFails += 1
         Score -= ScorePerFail
+        
+        MultiplerHits = 0
+        MultiplierRatio = 1
+        
+        
         if CurrentFails >= MaxConsecutiveFails {
             GameOver = true
         }
