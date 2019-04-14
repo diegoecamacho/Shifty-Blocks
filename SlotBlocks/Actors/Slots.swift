@@ -11,22 +11,20 @@ import SpriteKit
 
 
 class Slots: Actor {
-    var acceptedShape : Shapes? = .Square
-    var acceptedColor : Colors? = .None
-    
-    var currentShape : Shapes = .Square {
+    var acceptedShape : Shapes = .Square
+    {
         didSet{
-            switch currentShape {
+            switch acceptedShape {
             case .Square:
-                let tempTexture = SKTexture(imageNamed: "SquareShape")
+                let tempTexture = SKTexture(imageNamed: "SquareSlot")
                 texture = tempTexture
                 break
             case .Circle:
-                let tempTexture = SKTexture(imageNamed: "CircleShape")
+                let tempTexture = SKTexture(imageNamed: "CircleSlot")
                 texture = tempTexture
                 break
             case .Triangle:
-                let tempTexture = SKTexture(imageNamed: "TriangleShape")
+                let tempTexture = SKTexture(imageNamed: "TriangleSlot")
                 texture = tempTexture
                 break
             }
@@ -34,28 +32,28 @@ class Slots: Actor {
         }
     }
     
-    var currentColor : Colors = .Green //{
-        //didSet{
-        //    switch currentShape {
-        //    case .Square:
-        //        let tempTexture = SKTexture(imageNamed: "SquareShape")
-        //        texture = tempTexture
-        //        break
-        //    case .Circle:
-        //        let tempTexture = SKTexture(imageNamed: "CircleShape")
-        //        texture = tempTexture
-        //        break
-        //    case .Triangle:
-        //        let tempTexture = SKTexture(imageNamed: "TriangleShape")
-        //        texture = tempTexture
-        //        break
-        //    }
-        //
-        //}
-    //}
-    
-    
-    
+    var acceptedColor : Colors = .None
+    {
+        didSet{
+            switch acceptedColor {
+            case .Blue:
+                let tempTexture = SKTexture(imageNamed: "\(acceptedShape)" + "_SLOT_BLUE")
+                texture = tempTexture
+                break
+            case .Green:
+                let tempTexture = SKTexture(imageNamed: "\(acceptedShape)" + "_SLOT_GREEN")
+                texture = tempTexture
+                break
+            case.Red:
+                let tempTexture = SKTexture(imageNamed: "\(acceptedShape)" + "_SLOT_RED")
+                texture = tempTexture
+                break
+            case .None:
+                break
+            }
+        }
+    }
+
     public func Initialize(detectedShape : Shapes, colorDetected : Colors) -> Void {
         
         print("iNIT")

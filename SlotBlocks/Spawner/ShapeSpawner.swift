@@ -28,14 +28,6 @@ class ShapeSpawner : SKNode {
         
         spawnerScene = scene
         
-        
-        let waitfor = SKAction.wait(forDuration: 3)
-        let runblock = SKAction.run(self.SpawnShape)
-    
-        
-        let repearForever = SKAction.repeatForever(SKAction.sequence([waitfor,runblock]))
-        
-        run(repearForever)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,7 +40,7 @@ class ShapeSpawner : SKNode {
         SpawnLocation.append(location)
     }
     
-    public func SpawnShape(){
+    public func SpawnShape() -> Shape{
         let randomLocation = SpawnLocation.randomElement()
        let shape =  Shape(imageName: "SquareShape")
         LatestSpawn = Shapes(rawValue: Int.random(in: 0 ..< 3))!
@@ -57,6 +49,7 @@ class ShapeSpawner : SKNode {
        shape.size = CGSize(width: 200, height: 200)
        shape.position = (randomLocation?.position)!
        self.spawnerScene?.addChild(shape)
+        return shape
     }
    
 }

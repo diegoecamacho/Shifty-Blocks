@@ -46,6 +46,8 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
         gameplayController?.AddSlot(slot: Slot2!)
         gameplayController?.AddSlot(slot: Slot3!)
         
+        addChild(gameplayController!)
+        
     }
     override func update(_ currentTime: TimeInterval) {
         for node in self.children {
