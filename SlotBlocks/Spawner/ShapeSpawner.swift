@@ -17,9 +17,15 @@ class ShapeSpawner : SKNode {
     
     var spawnerScene : SKScene?
     
-    init(scene :SKScene){
+    var Difficulty : Int = 1
+    
+    init(scene :SKScene , difficulty : Int){
         super.init()
+        
+        self.Difficulty = difficulty
+        
         spawnerScene = scene
+        
         
         let waitfor = SKAction.wait(forDuration: 3)
         let runblock = SKAction.run(self.SpawnShape)
@@ -34,6 +40,8 @@ class ShapeSpawner : SKNode {
        super.init(coder: aDecoder)
     }
     
+    
+    
     public func AddSpawnerLocation(location : SKNode){
         SpawnLocation.append(location)
     }
@@ -42,6 +50,7 @@ class ShapeSpawner : SKNode {
         let randomLocation = SpawnLocation.randomElement()
        let shape =  Shape(imageName: "SquareShape")
         shape.currentShape = Shapes(rawValue: Int.random(in: 0 ..< 3))!
+        shape.SetSpeed(shapeDifficulty: CGFloat(Difficulty))
        shape.size = CGSize(width: 200, height: 200)
        shape.position = (randomLocation?.position)!
        self.spawnerScene?.addChild(shape)

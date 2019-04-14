@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import GameplayKit
 
 class DifficultyMenu: SKScene {
     
@@ -62,11 +63,5 @@ class DifficultyMenu: SKScene {
         guard let touch = touches.first?.location(in: self) else { return }
         menuController.handle(point: touch)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    
     
 }

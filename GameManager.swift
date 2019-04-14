@@ -15,7 +15,7 @@ class GameManager {
     
     public var GameOver : Bool = false
     
-    public var GameSpeedMultiplier : Int = 1
+    public var GameSpeedMultiplier : Int = 2
     
     public var CurrentFails: Int = 0
     
@@ -23,9 +23,11 @@ class GameManager {
     
     private var ScorePerFail = 20
     
+    private var MultiplerHits = 0
+    
     private var ScorePerHit : Int = 10
     
-    private var MultiplierRatio :Int = 1
+    public var MultiplierRatio :Int = 1
     
     private var RatioIncreaseEvery: Int = 5
     
@@ -33,9 +35,11 @@ class GameManager {
     
     public func IncreaseScore(){
         ConsecutiveHits += 1
+        MultiplerHits += 1
         
-        if ConsecutiveHits >= RatioIncreaseEvery {
+        if MultiplerHits >= RatioIncreaseEvery {
             MultiplierRatio += 1
+            MultiplerHits = 0
         }
         
         Score += ScorePerHit * MultiplierRatio

@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class MainMenuScene: SKScene {
+class DifficultyScene: SKScene {
     
     var menuController : ButtonController  = ButtonController()
     
@@ -27,7 +27,7 @@ class MainMenuScene: SKScene {
         playButton = playMenuButton
         playButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         playButton?.AddCallback (callback:{
-            let nextScene = DifficultyMenu(fileNamed: "DifficultyMenu")
+            let nextScene = Level1Scene(fileNamed: "DifficultyMenu")
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
         })
@@ -58,8 +58,6 @@ class MainMenuScene: SKScene {
         guard let touch = touches.first?.location(in: self) else { return }
         menuController.handle(point: touch)
     }
+    
+    
 }
-
-
-
-

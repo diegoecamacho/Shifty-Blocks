@@ -25,7 +25,11 @@ public enum Colors: Int {
 
 class Shape: Actor {
     
-    public var movementSpeed : CGFloat = -50
+    private var baseMovement : CGFloat = -100
+    
+    public var movementSpeed : CGFloat = -100
+    
+    public var IsClicked : Bool = false
     
     private var windowSize : CGRect
     
@@ -58,8 +62,6 @@ class Shape: Actor {
         
         print(windowSize.height)
         
-        
-        
         self.physicsBody = SKPhysicsBody(texture: texture!, size: CGSize(width: texture!.size().width / 6, height: texture!.size().height / 6))
         self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.allowsRotation = false
@@ -73,6 +75,11 @@ class Shape: Actor {
         
         run(sequence)
 
+    }
+    
+    public func SetSpeed(shapeDifficulty: CGFloat) ->Void
+    {
+        movementSpeed = baseMovement * shapeDifficulty
     }
     
     required init?(coder aDecoder: NSCoder) {

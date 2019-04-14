@@ -17,13 +17,15 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
     var SpawnLocationB : SKNode?
     var SpawnLocationC : SKNode?
     
-     var timer : Int?
-    
     var Slot1 : Slots?
     var Slot2 : Slots?
     var Slot3 : Slots?
     
     var shape: Shape?
+    
+    var scoreText : SKLabelNode?
+    var multiplerText : SKLabelNode?
+    
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -37,6 +39,9 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
         SpawnLocationB = childNode(withName: "SpawnPointB")
         SpawnLocationC = childNode(withName: "SpawnPointC")
         
+        scoreText = childNode(withName: "Score") as? SKLabelNode
+        multiplerText = childNode(withName: "Multiplier") as? SKLabelNode
+        
         Slot1 = childNode(withName: "SquareSlot") as? Slots
         Slot2 = childNode(withName: "TriangleSlot") as? Slots
         Slot3 = childNode(withName: "CircleSlot") as? Slots
@@ -44,10 +49,9 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
         Slot1?.Initialize(detectedShape: .Square, colorDetected: .None)
         Slot2?.Initialize(detectedShape: .Triangle, colorDetected: .None)
         Slot3?.Initialize(detectedShape: .Circle, colorDetected: .None)
+
         
-         timer = 300
-        
-        Spawner = ShapeSpawner(scene: self)
+        Spawner = ShapeSpawner(scene: self, difficulty: GameManager.Instance.GameSpeedMultiplier)
         Spawner?.AddSpawnerLocation(location: SpawnLocationA!)
         Spawner?.AddSpawnerLocation(location: SpawnLocationB!)
         Spawner?.AddSpawnerLocation(location: SpawnLocationC!)
@@ -62,12 +66,17 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
                 actor.update(currentTime: currentTime)
             }
         }
-        timer! -= 1
-        if(timer == 0){
-            let nextScene = SettingsMenu(fileNamed: "ResultsScreen")
+        
+        scoreText?.text = String(GameManager.Instance.Score)
+    
+        multiplerText?.text = String(GameManager.Instance.MultiplierRatio)
+        
+        if(GameManager.Instance.GameOver){
+            let nextScene = ResultsScreen(fileNamed: "ResultScreen")
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
         }
+     
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -85,6 +94,7 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
         let node = self.nodes(at: touch.location(in: self)).first //Get first node in array.
         if node is Shape {
             shape = node as? Shape
+            shape?.IsClicked = true
             shape?.removeAllActions()
         }
     }
