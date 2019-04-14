@@ -37,8 +37,8 @@ class SettingsMenu: SKScene {
         globalMute = isMuted
         muteButton?.AddCallback (callback:{
             if(!isMuted){
+                muteToggleButton.SetSelectionSprite(fileName: "redMuteButton")
                 isMuted = true
-                self.muteButton?.color = UIColor.red
                 //mute game sounds here
                 guard let GVC = self.gv else {return}
                 //GVC.setBackgroundMusicVolume(to: 0)
@@ -46,7 +46,7 @@ class SettingsMenu: SKScene {
             }
             else{
                 isMuted = false
-                self.muteButton?.color = UIColor.green
+                muteToggleButton.SetSelectionSprite(fileName: "greenMuteButton")
                 guard let GVC = self.gv else {return}
                 //GVC.setBackgroundMusicVolume(to: 1)
             }

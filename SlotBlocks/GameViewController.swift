@@ -80,6 +80,4 @@ class GameViewController: UIViewController {
         let volume = userInfo["volume"] as! Float
             //setBackgroundMusicVolume(to: volume)
     }
-    
-    //func setBackgrounµ
 }

@@ -15,9 +15,18 @@ class ResultsScreen: SKScene {
     
     var playButton : MenuButton?
     var menuButton : MenuButton?
+    var roundScore : SKLabelNode?
     
     override func sceneDidLoad() {
         InitializeButtons()
+        SetScore()
+    }
+    
+    func SetScore(){
+        let score = GameManager.Instance.Score
+        let scoreText = childNode(withName: "scoreText")
+        roundScore = scoreText as? SKLabelNode
+        roundScore?.text = String(score)
     }
     
     fileprivate func InitializeButtons(){
