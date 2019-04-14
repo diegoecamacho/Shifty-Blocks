@@ -19,7 +19,7 @@ class GameplayController : SKNode{
         shapeSpawner = ShapeSpawner(scene: scene, difficulty: GameManager.Instance.GameSpeedMultiplier)
         
         let waitfor = SKAction.wait(forDuration: 2)
-        let runblock = SKAction.run(shapeSpawner!.SpawnShape)
+        let runblock = SKAction.run(self.SpawnShape)
         
         let repearForever = SKAction.repeatForever(SKAction.sequence([waitfor,runblock]))
         
@@ -34,7 +34,14 @@ class GameplayController : SKNode{
     
     public func AddSlot(slot : Slots){
         let shape = slot.acceptedShape
-        SlotsDictionary[shape!] = slot
+        SlotsDictionary[shape] = slot
+    }
+    
+    private func SpawnShape() -> Void{
+        let shape = shapeSpawner!.SpawnShape()
+        let slot = SlotsDictionary[shape.currentShape]
+        
+        slot?.acceptedColor = shape.currentColor
     }
     
     public func AddSpawnerLocation(location : SKNode){

@@ -34,6 +34,26 @@ class Shape: Actor {
     private var windowSize : CGRect
     
     var currentColor : Colors = .None
+    {
+        didSet{
+            switch currentColor {
+            case .Blue:
+                let tempTexture = SKTexture(imageNamed: "\(currentShape)" + "BLUE")
+                texture = tempTexture
+                break
+            case .Green:
+                let tempTexture = SKTexture(imageNamed: "\(currentShape)" + "GREEN")
+                texture = tempTexture
+                break
+            case.Red:
+                let tempTexture = SKTexture(imageNamed: "\(currentShape)" + "RED")
+                texture = tempTexture
+                break
+            case .None:
+                break
+            }
+        }
+    }
     
     var currentShape : Shapes = .Square {
         didSet{
