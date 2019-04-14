@@ -74,6 +74,7 @@ class Slots: Actor {
     public func ReceiveShape(shape : Shape) -> Void{
         if acceptedShape == shape.currentShape{
             if acceptedColor == shape.currentColor{
+                GameManager.Instance.IncreaseScore()
                 shape.removeFromParent()
             }
         }

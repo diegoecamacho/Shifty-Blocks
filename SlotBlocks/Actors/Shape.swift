@@ -84,6 +84,7 @@ class Shape: Actor {
         super.update(currentTime: currentTime)
        if self.position.y < 0 - (windowSize.height + texture!.size().height / 6)
        {
+            GameManager.Instance.DecreaseScore()
            self.removeFromParent()
        }
     }

@@ -17,6 +17,8 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
     var SpawnLocationB : SKNode?
     var SpawnLocationC : SKNode?
     
+     var timer : Int?
+    
     var Slot1 : Slots?
     var Slot2 : Slots?
     var Slot3 : Slots?
@@ -43,6 +45,8 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
         Slot2?.Initialize(detectedShape: .Triangle, colorDetected: .None)
         Slot3?.Initialize(detectedShape: .Circle, colorDetected: .None)
         
+         timer = 300
+        
         Spawner = ShapeSpawner(scene: self)
         Spawner?.AddSpawnerLocation(location: SpawnLocationA!)
         Spawner?.AddSpawnerLocation(location: SpawnLocationB!)
@@ -57,6 +61,12 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
                 let actor = node as! Actor
                 actor.update(currentTime: currentTime)
             }
+        }
+        timer! -= 1
+        if(timer == 0){
+            let nextScene = SettingsMenu(fileNamed: "ResultsScreen")
+            nextScene?.scaleMode = .aspectFill
+            self.view!.presentScene(nextScene)
         }
     }
     
