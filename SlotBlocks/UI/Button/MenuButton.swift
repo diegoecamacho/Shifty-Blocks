@@ -53,6 +53,9 @@ class MenuButton: SKSpriteNode {
     public func SetSelectionSprite(fileName:String) -> Void{
         let tempTexture = SKTexture(imageNamed: fileName)
         SelectionSprite = tempTexture
+        //play sound
+        SKAction.playSoundFileNamed("buttonClick_Sound", waitForCompletion: true)
+      
     }
     
     public func AddCallback(callback: @escaping () -> Void){
