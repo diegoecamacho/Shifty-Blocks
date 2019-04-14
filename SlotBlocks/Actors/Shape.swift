@@ -16,64 +16,44 @@ public enum Shapes: Int {
 }
 
 public enum Colors: Int {
-    case None = 0,
-    Blue = 1,
-    Red = 2,
-    Green = 3
+    case Blue = 0,
+    Red = 1,
+    Green = 2
 }
 
 
 class Shape: Actor {
     
-    private var baseMovement : CGFloat = -100
+    private var baseMovement : CGFloat = -50
     
-    public var movementSpeed : CGFloat = -100
+    public var movementSpeed : CGFloat = -50
     
     public var IsClicked : Bool = false
     
     private var windowSize : CGRect
     
-    var currentColor : Colors = .None
+    var currentColor : Colors = .Blue
     {
         didSet{
             switch currentColor {
             case .Blue:
-                let tempTexture = SKTexture(imageNamed: "\(currentShape)" + "BLUE")
+                let tempTexture = SKTexture(imageNamed: "\(currentShape)" + "_BLUE")
                 texture = tempTexture
                 break
             case .Green:
-                let tempTexture = SKTexture(imageNamed: "\(currentShape)" + "GREEN")
+                let tempTexture = SKTexture(imageNamed: "\(currentShape)" + "_GREEN")
                 texture = tempTexture
                 break
             case.Red:
-                let tempTexture = SKTexture(imageNamed: "\(currentShape)" + "RED")
+                let tempTexture = SKTexture(imageNamed: "\(currentShape)" + "_RED")
                 texture = tempTexture
                 break
-            case .None:
-                break
-            }
         }
+      }
     }
     
-    var currentShape : Shapes = .Square {
-        didSet{
-            switch currentShape {
-            case .Square:
-                let tempTexture = SKTexture(imageNamed: "SquareShape")
-                texture = tempTexture
-                break
-            case .Circle:
-                let tempTexture = SKTexture(imageNamed: "CircleShape")
-                texture = tempTexture
-                break
-            case .Triangle:
-                let tempTexture = SKTexture(imageNamed: "TriangleShape")
-                texture = tempTexture
-                break
-            }
-            
-        }
-    }
+    var currentShape : Shapes = .Square
+
     
     
     override init(imageName: String) {

@@ -149,8 +149,6 @@
 		1E3769D42237093D00FFC817 = {
 			isa = PBXGroup;
 			children = (
-				CE000D102263B24B000B548C /* GameManager.swift */,
-				CE000D0A22626784000B548C /* Physics */,
 				1E3769DF2237093D00FFC817 /* SlotBlocks */,
 				1E3769DE2237093D00FFC817 /* Products */,
 			);
@@ -167,7 +165,11 @@
 		1E3769DF2237093D00FFC817 /* SlotBlocks */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
 				16A004792263ED9B00C16A58 /* Sounds */,
+=======
+				CE000D0A22626784000B548C /* Physics */,
+>>>>>>> Stashed changes
 				1E3769E02237093D00FFC817 /* AppDelegate.swift */,
 				1E3769E42237093D00FFC817 /* Actions.sks */,
 				1EBEB3C8223842370039A140 /* Gameplay */,
@@ -205,6 +207,7 @@
 		1EBEB3C8223842370039A140 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
+				CE000D102263B24B000B548C /* GameManager.swift */,
 				1EBEB3C9223842480039A140 /* Spawner */,
 				CE000D262263D902000B548C /* GameplayController.swift */,
 			);
