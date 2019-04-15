@@ -66,3 +66,4 @@ class GameManager {
         MultiplierRatio = 1
     }
 }
+
