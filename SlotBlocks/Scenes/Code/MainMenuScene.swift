@@ -24,7 +24,7 @@ class MainMenuScene: SKScene {
         InitializeButtons()
     }
     override func didMove(to view: SKView) {
-        let menuMusic = SKAudioNode(fileNamed: "/Sounds/menuMusic.mp3")
+        let menuMusic = SKAudioNode(fileNamed: "Sounds/menuMusic.mp3")
         //  menuMusic.run(SKAction.changeVolume(to: 1, duration: 0))
         menuMusic.autoplayLooped = true
         addChild(menuMusic)

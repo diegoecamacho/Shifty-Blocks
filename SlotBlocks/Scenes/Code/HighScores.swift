@@ -22,12 +22,23 @@ class HighScores: SKScene {
     fileprivate func InitializeButtons(){
         guard let exitMenuButton = childNode(withName: "exitButton") as? MenuButton else { return }
         exitButton = exitMenuButton
-      //  exitButton?.SetSelectionSprite(fileName: "PlayButtonActive")
+      //exitButton?.SetSelectionSprite(fileName: "redMenuButton")
         exitButton?.AddCallback (callback:{
             let menuScene = Level1Scene(fileNamed: "MainMenuScene")
             menuScene?.scaleMode = .aspectFill
             self.view!.presentScene(menuScene)
         })
+        
+        func SetupHighScores(){
+            guard let easyHighScore = childNode(withName: "EasyHighScore") else {return}
+           // easyHighScore = GameManager.Instance.EasyHighScore
+            
+            guard let hardHighScore = childNode(withName: "HardHighScore") else {return}
+           // hardHighScore = GameManager.Instance.HardHighScore
+            
+            guard let extremeHighScore = childNode(withName: "ExtremeHighScore") else {return}
+           // ExtremeHighScore = GameManager.Instance.ExtremeHighScore
+        }
         
         
         menuController.AddButton(menuButton: exitButton!)

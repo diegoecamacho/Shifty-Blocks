@@ -17,8 +17,6 @@ class DifficultyMenu: SKScene {
     var easyButton : MenuButton?
     var hardButton : MenuButton?
     var extremeButton : MenuButton?
-    let difficultyOptions = [1,2,3]
-    var difficulty : Int?
     
     override func sceneDidLoad() {
         InitializeButtons()
@@ -29,7 +27,7 @@ class DifficultyMenu: SKScene {
         easyButton = easyplayMenuButton
         easyButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         easyButton?.AddCallback (callback:{
-            //self.difficulty! = self.difficultyOptions[0]
+            GameManager.Instance.GameSpeedMultiplier = 1
             let gameScene = Level1Scene(fileNamed: "GameScene")
             gameScene?.scaleMode = .aspectFill
             self.view!.presentScene(gameScene)
@@ -39,7 +37,7 @@ class DifficultyMenu: SKScene {
         hardButton = hardplayMenuButton
         hardButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         hardButton?.AddCallback (callback:{
-            //self.difficulty! = self.difficultyOptions[1]
+            GameManager.Instance.GameSpeedMultiplier = 2
             let nextScene = Level1Scene(fileNamed: "GameScene")
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
@@ -48,7 +46,7 @@ class DifficultyMenu: SKScene {
         guard let extremePlayMenuButton = childNode(withName: "extremeButton") as? MenuButton else {return}
         extremeButton = extremePlayMenuButton
         extremeButton?.AddCallback {
-            //self.difficulty! = self.difficultyOptions[2]
+            GameManager.Instance.GameSpeedMultiplier = 3
             let nextScene = Level1Scene(fileNamed: "GameScene")
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
