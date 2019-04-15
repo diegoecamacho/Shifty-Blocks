@@ -67,7 +67,7 @@ class MainMenuScene: SKScene {
             self.view!.presentScene(nextScene)
         }
         
-        let sound = SKAction.playSoundFileNamed("menuMusic", waitForCompletion: true)
+        let sound = SKAction.playSoundFileNamed("menuMusic", waitForCompletion: false)
         run(sound)
         
         menuController.AddButton(menuButton: playButton!)

@@ -53,6 +53,7 @@ class ShapeSpawner : SKNode {
         shape.SetSpeed(shapeDifficulty: CGFloat(Difficulty))
        shape.size = CGSize(width: 200, height: 200)
        shape.position = (randomLocation?.position)!
+        shape.PlayAnimation()
        self.spawnerScene?.addChild(shape)
         return shape
     }

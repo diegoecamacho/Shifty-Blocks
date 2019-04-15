@@ -15,7 +15,7 @@ class GameManager {
     
     public var GameOver : Bool = false
     
-    public var GameSpeedMultiplier : Int = 2
+    public var GameSpeedMultiplier : Int = 3
     
     public var CurrentFails: Int = 0
     

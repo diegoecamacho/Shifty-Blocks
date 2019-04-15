@@ -68,13 +68,14 @@ class Shape: Actor {
         
         self.physicsBody?.categoryBitMask = ShapeCategory
         self.physicsBody?.collisionBitMask = DefaultCategory
-       
-        
+
+    }
+    
+    public func PlayAnimation() -> Void{
         let moveAction = SKAction.moveBy(x: 0, y: movementSpeed, duration: 0.1)
         let sequence = SKAction.repeatForever(moveAction)
         
         run(sequence)
-
     }
     
     public func SetSpeed(shapeDifficulty: CGFloat) ->Void
