@@ -20,9 +20,9 @@ class ShapeSpawner : SKNode {
     
     var spawnerScene : SKScene?
     
-    var Difficulty : Int = 1
+    var Difficulty : Float = 1
     
-    init(scene :SKScene , difficulty : Int){
+    init(scene :SKScene , difficulty : Float){
         super.init()
         
         self.Difficulty = difficulty

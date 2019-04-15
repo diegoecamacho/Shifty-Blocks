@@ -17,6 +17,14 @@ class HighScores: SKScene {
     
     override func sceneDidLoad() {
         InitializeButtons()
+        SetupHighScores()
+    }
+    
+    override func didMove(to view: SKView) {
+        let menuMusic = SKAudioNode(fileNamed: "settingMusic.mp3")
+        menuMusic.autoplayLooped = true
+        menuMusic.run(SKAction.changeVolume(by: GameManager.Instance.Volume, duration: 0))
+        addChild(menuMusic)
     }
     
     fileprivate func InitializeButtons(){
@@ -29,20 +37,21 @@ class HighScores: SKScene {
             self.view!.presentScene(menuScene)
         })
         
-        func SetupHighScores(){
-            guard let easyHighScore = childNode(withName: "EasyHighScore") else {return}
-           // easyHighScore = GameManager.Instance.EasyHighScore
-            
-            guard let hardHighScore = childNode(withName: "HardHighScore") else {return}
-           // hardHighScore = GameManager.Instance.HardHighScore
-            
-            guard let extremeHighScore = childNode(withName: "ExtremeHighScore") else {return}
-           // ExtremeHighScore = GameManager.Instance.ExtremeHighScore
-        }
-        
+    
         
         menuController.AddButton(menuButton: exitButton!)
     }
+    func SetupHighScores(){
+        guard let easyHighScore = childNode(withName: "EasyHighScore") as? SKLabelNode else {return}
+        easyHighScore.text = "Easy: " + String(GameManager.Instance.EasyHighScore)
+        
+        guard let hardHighScore = childNode(withName: "HardHighScore") as? SKLabelNode else {return}
+        hardHighScore.text = "Hard: " + String(GameManager.Instance.HardHighScore)
+        
+        guard let extremeHighScore = childNode(withName: "ExtremeHighScore") as? SKLabelNode else {return}
+        extremeHighScore.text = "Extreme: " + String(GameManager.Instance.ExtremeHighScore)
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first?.location(in: self) else { return }

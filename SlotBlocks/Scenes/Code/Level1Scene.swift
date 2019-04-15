@@ -21,6 +21,10 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
+        let menuMusic = SKAudioNode(fileNamed: "gameMusic.mp3")
+        menuMusic.autoplayLooped = true
+        menuMusic.run(SKAction.changeVolume(by: GameManager.Instance.Volume, duration: 0))
+        addChild(menuMusic)
     }
     
     override func sceneDidLoad() {
@@ -62,24 +66,24 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
         multiplerText?.text = String(GameManager.Instance.MultiplierRatio)
         
         if(GameManager.Instance.GameOver){
-            /*if(GameManager.Instance.GameSpeedMultiplier == 1){
+            if(GameManager.Instance.GameSpeedMultiplier == 0.5){
                 //set easy high score
                 if(GameManager.Instance.Score >= GameManager.Instance.EasyHighScore){
                     GameManager.Instance.EasyHighScore = GameManager.Instance.Score
                 }
             }
-            if(GameManager.Instance.GameSpeedMultiplier == 2){
+            if(GameManager.Instance.GameSpeedMultiplier == 0.75){
                 //set hard high score
                 if(GameManager.Instance.Score >= GameManager.Instance.HardHighScore){
                     GameManager.Instance.HardHighScore = GameManager.Instance.Score
                 }
             }
-            if(GameManager.Instance.GameSpeedMultiplier == 3){
+            if(GameManager.Instance.GameSpeedMultiplier == 1){
                 //set extreme high score
                 if(GameManager.Instance.Score >= GameManager.Instance.ExtremeHighScore){
                     GameManager.Instance.ExtremeHighScore = GameManager.Instance.Score
                 }
-            }*/
+            }
             let nextScene = ResultsScreen(fileNamed: "ResultsScreen")
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
@@ -94,6 +98,11 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
             let slot: Slots = contact.bodyA.node! as! Slots
             let shape: Shape = contact.bodyB.node! as! Shape
             slot.ReceiveShape(shape: shape)
+           let scoreSound = SKAction.playSoundFileNamed("scorePoint_Sound", waitForCompletion: false)
+            if(shape.IsClicked){
+                run(scoreSound)
+            }
+           
         }
     }
     

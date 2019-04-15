@@ -19,6 +19,13 @@ class HelpMenu: SKScene {
         InitializeButtons()
     }
     
+    override func didMove(to view: SKView) {
+        let menuMusic = SKAudioNode(fileNamed: "settingMusic.mp3")
+        menuMusic.autoplayLooped = true
+        menuMusic.run(SKAction.changeVolume(by: GameManager.Instance.Volume, duration: 0))
+        addChild(menuMusic)
+    }
+    
     fileprivate func InitializeButtons(){
         guard let mainMenuButton = childNode(withName: "exitButton") as? MenuButton else {return}
         menuButton = mainMenuButton

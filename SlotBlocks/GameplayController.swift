@@ -17,8 +17,8 @@ class GameplayController : SKNode{
         super.init()
         
         shapeSpawner = ShapeSpawner(scene: scene, difficulty: GameManager.Instance.GameSpeedMultiplier)
-        
-        let waitfor = SKAction.wait(forDuration: 2)
+        let waitDuration = 2 / GameManager.Instance.GameSpeedMultiplier
+        let waitfor = SKAction.wait(forDuration: TimeInterval(waitDuration))
         let runblock = SKAction.run(self.SpawnShape)
         
         let repearForever = SKAction.repeatForever(SKAction.sequence([waitfor,runblock]))

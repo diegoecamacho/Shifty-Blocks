@@ -20,6 +20,15 @@ class ResultsScreen: SKScene {
     override func sceneDidLoad() {
         InitializeButtons()
         SetScore()
+        GameManager.Instance.GameOver = false
+        GameManager.Instance.CurrentFails = 0
+    }
+    
+    override func didMove(to view: SKView) {
+        let menuMusic = SKAudioNode(fileNamed: "settingMusic.mp3")
+        menuMusic.autoplayLooped = true
+        menuMusic.run(SKAction.changeVolume(by: GameManager.Instance.Volume, duration: 0))
+        addChild(menuMusic)
     }
     
     func SetScore(){
@@ -27,6 +36,24 @@ class ResultsScreen: SKScene {
         let scoreText = childNode(withName: "scoreText")
         roundScore = scoreText as? SKLabelNode
         roundScore?.text = String(score)
+        if(GameManager.Instance.GameSpeedMultiplier == 0.5){
+            //set easy high score
+            if(GameManager.Instance.Score >= GameManager.Instance.EasyHighScore){
+                GameManager.Instance.EasyHighScore = GameManager.Instance.Score
+            }
+        }
+        if(GameManager.Instance.GameSpeedMultiplier == 0.75){
+            //set hard high score
+            if(GameManager.Instance.Score >= GameManager.Instance.HardHighScore){
+                GameManager.Instance.HardHighScore = GameManager.Instance.Score
+            }
+        }
+        if(GameManager.Instance.GameSpeedMultiplier == 1){
+            //set extreme high score
+            if(GameManager.Instance.Score >= GameManager.Instance.ExtremeHighScore){
+                GameManager.Instance.ExtremeHighScore = GameManager.Instance.Score
+            }
+        }
     }
     
     fileprivate func InitializeButtons(){
@@ -34,6 +61,7 @@ class ResultsScreen: SKScene {
         playButton = playMenuButton
         playButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         playButton?.AddCallback (callback:{
+            GameManager.Instance.Score = 0
             let nextScene = Level1Scene(fileNamed: "GameScene")
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)

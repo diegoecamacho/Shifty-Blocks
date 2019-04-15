@@ -17,18 +17,25 @@ class MainMenuScene: SKScene {
     var highScoreButton : MenuButton?
     var settingsButton : MenuButton?
     var helpButton : MenuButton?
-    var music : SKAudioNode?
+    var music : SKAudioNode!
     
     
     override func sceneDidLoad() {
         InitializeButtons()
     }
     override func didMove(to view: SKView) {
-        let menuMusic = SKAudioNode(fileNamed: "Sounds/menuMusic.mp3")
-        //  menuMusic.run(SKAction.changeVolume(to: 1, duration: 0))
+        let menuMusic = SKAudioNode(fileNamed: "menuMusic.mp3")
         menuMusic.autoplayLooped = true
+        menuMusic.run(SKAction.changeVolume(by: GameManager.Instance.Volume, duration: 0))
         addChild(menuMusic)
-        music = menuMusic
+      //  let volume = SKAction.changeVolume(to: 0, duration: 1)
+        
+      //  let sound = SKAction.playSoundFileNamed("menuMusic", waitForCompletion: false)
+        
+      //  let sequence = SKAction.group([volume,sound])
+        
+      //  run(sequence)
+      //  music = menuMusic
         
     }
 
@@ -38,6 +45,8 @@ class MainMenuScene: SKScene {
         playButton = playMenuButton
         playButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         playButton?.AddCallback (callback:{
+            self.music?.run(SKAction.stop())
+            GameManager.Instance.Score = 0
             let nextScene = DifficultyMenu(fileNamed: "DifficultyMenu")
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
@@ -47,6 +56,7 @@ class MainMenuScene: SKScene {
         highScoreButton = scoreMenuButton
         highScoreButton?.SetSelectionSprite(fileName: "HighButtonActive")
         highScoreButton?.AddCallback (callback:{
+            self.music?.run(SKAction.stop())
             let nextScene = HighScores(fileNamed: "HighScores")
             self.removeAllActions()
             nextScene?.scaleMode = .aspectFill
@@ -56,6 +66,7 @@ class MainMenuScene: SKScene {
         guard let settingsMenuButton = childNode(withName: "SettingsButton") as? MenuButton else {return}
         settingsButton = settingsMenuButton
         settingsButton?.AddCallback {
+            self.music?.run(SKAction.stop())
             let nextScene = SettingsMenu(fileNamed: "SettingsMenu")
             self.removeAllActions()
             nextScene?.scaleMode = .aspectFill
@@ -64,22 +75,13 @@ class MainMenuScene: SKScene {
         guard let helpMenuButton = childNode(withName: "HelpButton") as? MenuButton else {return}
         helpButton = helpMenuButton
         helpButton?.AddCallback {
+            self.music?.run(SKAction.stop())
             let nextScene = SettingsMenu(fileNamed: "HelpMenu")
             self.removeAllActions()
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
         }
         
-        let volume = SKAction.changeVolume(to: 0.1, duration: 1)
-        
-        let sound = SKAction.playSoundFileNamed("menuMusic", waitForCompletion: false)
-        
-        let sequence = SKAction.group([volume,sound])
-        
-        run(sequence)
-        
-       
-        //run(sound)
         
         menuController.AddButton(menuButton: playButton!)
         menuController.AddButton(menuButton: highScoreButton!)

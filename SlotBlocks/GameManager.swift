@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import SpriteKit
+import GameplayKit
 
 class GameManager {
     public static var Instance = GameManager()
@@ -15,15 +17,19 @@ class GameManager {
     
     public var GameOver : Bool = false
     
-    public var GameSpeedMultiplier : Int = 1
+    public var GameSpeedMultiplier : Float = 1
     
     public var CurrentFails: Int = 0
     
     public var EasyHighScore : Int = 0
     
-    public var MediumHighScore : Int = 0
-    
     public var HardHighScore : Int = 0
+    
+    public var ExtremeHighScore : Int = 0
+    
+    public var Volume : Float = 1
+    
+    public var GlobalMute : Bool = false
     
     private var MaxConsecutiveFails : Int = 3
     

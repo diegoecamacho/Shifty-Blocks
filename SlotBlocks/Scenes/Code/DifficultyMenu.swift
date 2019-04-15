@@ -22,12 +22,19 @@ class DifficultyMenu: SKScene {
         InitializeButtons()
     }
     
+    override func didMove(to view: SKView) {
+        let menuMusic = SKAudioNode(fileNamed: "settingMusic.mp3")
+        menuMusic.autoplayLooped = true
+        menuMusic.run(SKAction.changeVolume(by: GameManager.Instance.Volume, duration: 0))
+        addChild(menuMusic)
+    }
+    
     fileprivate func InitializeButtons(){
         guard let easyplayMenuButton = childNode(withName: "easyButton") as? MenuButton else { return }
         easyButton = easyplayMenuButton
         easyButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         easyButton?.AddCallback (callback:{
-            GameManager.Instance.GameSpeedMultiplier = 1
+            GameManager.Instance.GameSpeedMultiplier = 0.5
             let gameScene = Level1Scene(fileNamed: "GameScene")
             gameScene?.scaleMode = .aspectFill
             self.view!.presentScene(gameScene)
@@ -37,7 +44,7 @@ class DifficultyMenu: SKScene {
         hardButton = hardplayMenuButton
         hardButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         hardButton?.AddCallback (callback:{
-            GameManager.Instance.GameSpeedMultiplier = 2
+            GameManager.Instance.GameSpeedMultiplier = 0.75
             let nextScene = Level1Scene(fileNamed: "GameScene")
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
@@ -46,7 +53,7 @@ class DifficultyMenu: SKScene {
         guard let extremePlayMenuButton = childNode(withName: "extremeButton") as? MenuButton else {return}
         extremeButton = extremePlayMenuButton
         extremeButton?.AddCallback {
-            GameManager.Instance.GameSpeedMultiplier = 3
+            GameManager.Instance.GameSpeedMultiplier = 1
             let nextScene = Level1Scene(fileNamed: "GameScene")
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)

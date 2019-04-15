@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1625AE8E2263D751005F0D5E /* HelpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1625AE8D2263D751005F0D5E /* HelpMenu.swift */; };
 		1625AE902263D772005F0D5E /* HelpMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1625AE8F2263D772005F0D5E /* HelpMenu.sks */; };
+		16A0048A22643D6F00C16A58 /* settingMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16A0048922643D6F00C16A58 /* settingMusic.mp3 */; };
 		1E0AF71B22372748005E6573 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0AF71A22372748005E6573 /* MenuButton.swift */; };
 		1E0AF71D22372E41005E6573 /* ButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0AF71C22372E41005E6573 /* ButtonController.swift */; };
 		1E3769E12237093D00FFC817 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3769E02237093D00FFC817 /* AppDelegate.swift */; };
@@ -51,6 +52,7 @@
 		16A004862263EE3200C16A58 /* scorePoint_Sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = scorePoint_Sound.wav; sourceTree = "<group>"; };
 		16A004872263EE3300C16A58 /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic.mp3; sourceTree = "<group>"; };
 		16A004882263EE3300C16A58 /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
+		16A0048922643D6F00C16A58 /* settingMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = settingMusic.mp3; path = ../../../Sounds/settingMusic.mp3; sourceTree = "<group>"; };
 		1E0AF71A22372748005E6573 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		1E0AF71C22372E41005E6573 /* ButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonController.swift; sourceTree = "<group>"; };
 		1E3769DD2237093D00FFC817 /* SlotBlocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlotBlocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 				16A004842263EE3200C16A58 /* buttonClick_Sound.wav */,
 				16A004872263EE3300C16A58 /* gameMusic.mp3 */,
 				16A004882263EE3300C16A58 /* menuMusic.mp3 */,
+				16A0048922643D6F00C16A58 /* settingMusic.mp3 */,
 				16A004862263EE3200C16A58 /* scorePoint_Sound.wav */,
 				16A004852263EE3200C16A58 /* strike_Sound.wav */,
 			);
@@ -304,6 +307,7 @@
 				CE4D962522640A7700FFAE59 /* scorePoint_Sound.wav in Resources */,
 				CE000D232263BF7C000B548C /* MainMenuScene.sks in Resources */,
 				CE4D962622640A7700FFAE59 /* strike_Sound.wav in Resources */,
+				16A0048A22643D6F00C16A58 /* settingMusic.mp3 in Resources */,
 				CE000D162263BD14000B548C /* DifficultyMenu.sks in Resources */,
 				CE000D172263BD14000B548C /* HighScores.sks in Resources */,
 				1EBEB3C3223836850039A140 /* GameScene.sks in Resources */,
