@@ -48,6 +48,7 @@ class MainMenuScene: SKScene {
         highScoreButton?.SetSelectionSprite(fileName: "HighButtonActive")
         highScoreButton?.AddCallback (callback:{
             let nextScene = HighScores(fileNamed: "HighScores")
+            self.removeAllActions()
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
         })
@@ -56,6 +57,7 @@ class MainMenuScene: SKScene {
         settingsButton = settingsMenuButton
         settingsButton?.AddCallback {
             let nextScene = SettingsMenu(fileNamed: "SettingsMenu")
+            self.removeAllActions()
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
         }
@@ -63,12 +65,21 @@ class MainMenuScene: SKScene {
         helpButton = helpMenuButton
         helpButton?.AddCallback {
             let nextScene = SettingsMenu(fileNamed: "HelpMenu")
+            self.removeAllActions()
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
         }
         
+        let volume = SKAction.changeVolume(to: 0.1, duration: 1)
+        
         let sound = SKAction.playSoundFileNamed("menuMusic", waitForCompletion: false)
-        run(sound)
+        
+        let sequence = SKAction.group([volume,sound])
+        
+        run(sequence)
+        
+       
+        //run(sound)
         
         menuController.AddButton(menuButton: playButton!)
         menuController.AddButton(menuButton: highScoreButton!)
