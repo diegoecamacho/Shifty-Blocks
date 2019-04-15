@@ -15,9 +15,15 @@ class GameManager {
     
     public var GameOver : Bool = false
     
-    public var GameSpeedMultiplier : Int = 2
+    public var GameSpeedMultiplier : Int = 1
     
     public var CurrentFails: Int = 0
+    
+    public var EasyHighScore : Int = 0
+    
+    public var MediumHighScore : Int = 0
+    
+    public var HardHighScore : Int = 0
     
     private var MaxConsecutiveFails : Int = 3
     
@@ -32,6 +38,8 @@ class GameManager {
     private var RatioIncreaseEvery: Int = 5
     
     private var ConsecutiveHits : Int = 0
+    
+
     
     public func IncreaseScore(){
         ConsecutiveHits += 1

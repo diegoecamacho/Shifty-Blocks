@@ -34,6 +34,11 @@
 		CE000D212263BD61000B548C /* ResultsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE000D1D2263BD61000B548C /* ResultsScreen.swift */; };
 		CE000D232263BF7C000B548C /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE000D222263BF7C000B548C /* MainMenuScene.sks */; };
 		CE000D272263D902000B548C /* GameplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE000D262263D902000B548C /* GameplayController.swift */; };
+		CE4D962322640A7700FFAE59 /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16A004872263EE3300C16A58 /* gameMusic.mp3 */; };
+		CE4D962422640A7700FFAE59 /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16A004882263EE3300C16A58 /* menuMusic.mp3 */; };
+		CE4D962522640A7700FFAE59 /* scorePoint_Sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A004862263EE3200C16A58 /* scorePoint_Sound.wav */; };
+		CE4D962622640A7700FFAE59 /* strike_Sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A004852263EE3200C16A58 /* strike_Sound.wav */; };
+		CE4D962722640B6200FFAE59 /* buttonClick_Sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A004842263EE3200C16A58 /* buttonClick_Sound.wav */; };
 		CEC1209E2263FDEF00E961F6 /* CollisionLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1209D2263FDEF00E961F6 /* CollisionLayers.swift */; };
 		CEC120A02263FEEB00E961F6 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1209F2263FEEB00E961F6 /* GameManager.swift */; };
 /* End PBXBuildFile section */
@@ -296,13 +301,18 @@
 				1E3769EC2237093D00FFC817 /* Main.storyboard in Resources */,
 				1E3769EE2237093F00FFC817 /* Assets.xcassets in Resources */,
 				CE000D182263BD14000B548C /* SettingsMenu.sks in Resources */,
+				CE4D962522640A7700FFAE59 /* scorePoint_Sound.wav in Resources */,
 				CE000D232263BF7C000B548C /* MainMenuScene.sks in Resources */,
+				CE4D962622640A7700FFAE59 /* strike_Sound.wav in Resources */,
 				CE000D162263BD14000B548C /* DifficultyMenu.sks in Resources */,
 				CE000D172263BD14000B548C /* HighScores.sks in Resources */,
 				1EBEB3C3223836850039A140 /* GameScene.sks in Resources */,
 				1E3769F12237093F00FFC817 /* LaunchScreen.storyboard in Resources */,
+				CE4D962722640B6200FFAE59 /* buttonClick_Sound.wav in Resources */,
+				CE4D962322640A7700FFAE59 /* gameMusic.mp3 in Resources */,
 				1E3769E52237093D00FFC817 /* Actions.sks in Resources */,
 				1625AE902263D772005F0D5E /* HelpMenu.sks in Resources */,
+				CE4D962422640A7700FFAE59 /* menuMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
