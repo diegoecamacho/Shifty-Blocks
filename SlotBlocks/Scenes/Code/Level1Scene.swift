@@ -62,15 +62,24 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
         multiplerText?.text = String(GameManager.Instance.MultiplierRatio)
         
         if(GameManager.Instance.GameOver){
-            if(GameManager.Instance.GameSpeedMultiplier == 1){
+            /*if(GameManager.Instance.GameSpeedMultiplier == 1){
                 //set easy high score
+                if(GameManager.Instance.Score >= GameManager.Instance.EasyHighScore){
+                    GameManager.Instance.EasyHighScore = GameManager.Instance.Score
+                }
             }
             if(GameManager.Instance.GameSpeedMultiplier == 2){
                 //set hard high score
+                if(GameManager.Instance.Score >= GameManager.Instance.HardHighScore){
+                    GameManager.Instance.HardHighScore = GameManager.Instance.Score
+                }
             }
             if(GameManager.Instance.GameSpeedMultiplier == 3){
                 //set extreme high score
-            }
+                if(GameManager.Instance.Score >= GameManager.Instance.ExtremeHighScore){
+                    GameManager.Instance.ExtremeHighScore = GameManager.Instance.Score
+                }
+            }*/
             let nextScene = ResultsScreen(fileNamed: "ResultsScreen")
             nextScene?.scaleMode = .aspectFill
             self.view!.presentScene(nextScene)
