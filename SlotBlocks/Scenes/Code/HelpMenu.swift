@@ -30,9 +30,11 @@ class HelpMenu: SKScene {
         guard let mainMenuButton = childNode(withName: "exitButton") as? MenuButton else {return}
         menuButton = mainMenuButton
         menuButton?.AddCallback {
+            self.menuButton?.SetSelectionSprite(fileName: "redButton")
             let nextScene = SettingsMenu(fileNamed: "MainMenuScene")
+            let sceneTransition = SKTransition.crossFade(withDuration: 1.0)
             nextScene?.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            self.view!.presentScene(nextScene!, transition: sceneTransition)
         }
         menuController.AddButton(menuButton: menuButton!)
     }

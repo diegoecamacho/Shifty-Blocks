@@ -30,11 +30,12 @@ class HighScores: SKScene {
     fileprivate func InitializeButtons(){
         guard let exitMenuButton = childNode(withName: "exitButton") as? MenuButton else { return }
         exitButton = exitMenuButton
-      //exitButton?.SetSelectionSprite(fileName: "redMenuButton")
         exitButton?.AddCallback (callback:{
+            self.exitButton?.SetSelectionSprite(fileName: "redButton")
             let menuScene = Level1Scene(fileNamed: "MainMenuScene")
+            let sceneTransition = SKTransition.crossFade(withDuration: 1.0)
             menuScene?.scaleMode = .aspectFill
-            self.view!.presentScene(menuScene)
+            self.view!.presentScene(menuScene!, transition : sceneTransition)
         })
         
     

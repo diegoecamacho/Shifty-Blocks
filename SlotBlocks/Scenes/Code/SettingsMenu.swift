@@ -46,18 +46,17 @@ class SettingsMenu: SKScene {
         exitButton = exitMenuButton
         //  exitButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         exitButton?.AddCallback (callback:{
-            
+            self.exitButton?.SetSelectionSprite(fileName: "redButton")
             let menuScene = Level1Scene(fileNamed: "MainMenuScene")
+            let sceneTransition = SKTransition.reveal(with: .down, duration: 1)
             menuScene?.scaleMode = .aspectFill
-            self.view!.presentScene(menuScene)
+            self.view!.presentScene(menuScene!, transition: sceneTransition)
         })
         
         guard let lowerVolumeButton = childNode(withName: "volumeDownButton") as? MenuButton else {return}
         lVolumeButton = lowerVolumeButton
         lVolumeButton?.AddCallback {
             self.lVolumeButton?.SetSelectionSprite(fileName: "redButtonMinus")
-            let buttonClick = SKAction.playSoundFileNamed("buttonClick_Sound", waitForCompletion: false)
-            self.run(buttonClick)
             if(GameManager.Instance.Volume > -1 ){
                 GameManager.Instance.Volume -= 0.1
             }
@@ -70,8 +69,6 @@ class SettingsMenu: SKScene {
         rVolumeButton = raiseVolumeButton
         rVolumeButton?.AddCallback {
             self.rVolumeButton?.SetSelectionSprite(fileName: "greenButtonPlus")
-            let buttonClick = SKAction.playSoundFileNamed("buttonClick_Sound", waitForCompletion: false)
-            self.run(buttonClick)
             if(GameManager.Instance.Volume < 1 ){
                 GameManager.Instance.Volume += 0.1
             }

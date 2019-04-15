@@ -85,8 +85,9 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             let nextScene = ResultsScreen(fileNamed: "ResultsScreen")
+            let sceneTransition = SKTransition.doorsCloseHorizontal(withDuration: 1.0)
             nextScene?.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            self.view!.presentScene(nextScene!, transition: sceneTransition)
         }
      
     }
@@ -98,10 +99,6 @@ class Level1Scene: SKScene, SKPhysicsContactDelegate {
             let slot: Slots = contact.bodyA.node! as! Slots
             let shape: Shape = contact.bodyB.node! as! Shape
             slot.ReceiveShape(shape: shape)
-           let scoreSound = SKAction.playSoundFileNamed("scorePoint_Sound", waitForCompletion: false)
-            if(shape.IsClicked){
-                run(scoreSound)
-            }
            
         }
     }

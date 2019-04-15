@@ -46,10 +46,12 @@ class MainMenuScene: SKScene {
         playButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         playButton?.AddCallback (callback:{
             self.music?.run(SKAction.stop())
+            self.playButton?.SetSelectionSprite(fileName: "redButton")
             GameManager.Instance.Score = 0
             let nextScene = DifficultyMenu(fileNamed: "DifficultyMenu")
+            let sceneTransition = SKTransition.crossFade(withDuration: 1.0)
             nextScene?.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            self.view!.presentScene(nextScene!, transition: sceneTransition)
         })
         
         guard let scoreMenuButton = childNode(withName: "HighScoreButton") as? MenuButton else { return }
@@ -57,29 +59,36 @@ class MainMenuScene: SKScene {
         highScoreButton?.SetSelectionSprite(fileName: "HighButtonActive")
         highScoreButton?.AddCallback (callback:{
             self.music?.run(SKAction.stop())
+            self.highScoreButton?.SetSelectionSprite(fileName: "redButton")
             let nextScene = HighScores(fileNamed: "HighScores")
+            let sceneTransition = SKTransition.crossFade(withDuration: 1.0)
             self.removeAllActions()
             nextScene?.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            self.view!.presentScene(nextScene!, transition: sceneTransition)
         })
         
         guard let settingsMenuButton = childNode(withName: "SettingsButton") as? MenuButton else {return}
         settingsButton = settingsMenuButton
         settingsButton?.AddCallback {
             self.music?.run(SKAction.stop())
+            self.settingsButton?.SetSelectionSprite(fileName: "redSettingsButton")
             let nextScene = SettingsMenu(fileNamed: "SettingsMenu")
+            let sceneTransition = SKTransition.reveal(with: .up, duration: 1)
             self.removeAllActions()
             nextScene?.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            self.view!.presentScene(nextScene!, transition: sceneTransition)
         }
+        
         guard let helpMenuButton = childNode(withName: "HelpButton") as? MenuButton else {return}
         helpButton = helpMenuButton
         helpButton?.AddCallback {
             self.music?.run(SKAction.stop())
+            self.helpButton?.SetSelectionSprite(fileName: "redButton")
             let nextScene = SettingsMenu(fileNamed: "HelpMenu")
+            let sceneTransition = SKTransition.crossFade(withDuration: 1.0)
             self.removeAllActions()
             nextScene?.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            self.view!.presentScene(nextScene!, transition: sceneTransition)
         }
         
         

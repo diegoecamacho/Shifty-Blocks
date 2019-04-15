@@ -72,6 +72,8 @@ class Slots: Actor {
             if acceptedShape == shape.currentShape{
                 if acceptedColor == shape.currentColor{
                     GameManager.Instance.IncreaseScore()
+                    let scoreSound = SKAction.playSoundFileNamed("scorePoint_Sound", waitForCompletion: false)
+                    run(scoreSound)
                     shape.removeFromParent()
                 }
             }

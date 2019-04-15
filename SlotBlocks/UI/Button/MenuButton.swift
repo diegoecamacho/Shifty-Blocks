@@ -61,8 +61,11 @@ class MenuButton: SKSpriteNode {
     }
     
     public func Run(){
-        buttonCallback?()
-        buttonState = .ButtonSelected
+        let clickSound = SKAction.playSoundFileNamed("buttonClick_Sound", waitForCompletion: true)
+        run(clickSound){
+            self.buttonCallback?()
+            self.buttonState = .ButtonSelected
+    }
     }
     
     public func OnSelected(){

@@ -35,9 +35,11 @@ class DifficultyMenu: SKScene {
         easyButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         easyButton?.AddCallback (callback:{
             GameManager.Instance.GameSpeedMultiplier = 0.5
+            self.easyButton?.SetSelectionSprite(fileName: "redButton")
             let gameScene = Level1Scene(fileNamed: "GameScene")
+            let sceneTransition = SKTransition.doorsOpenHorizontal(withDuration: 1.0)
             gameScene?.scaleMode = .aspectFill
-            self.view!.presentScene(gameScene)
+            self.view!.presentScene(gameScene!, transition: sceneTransition)
         })
         
         guard let hardplayMenuButton = childNode(withName: "hardButton") as? MenuButton else { return }
@@ -46,17 +48,21 @@ class DifficultyMenu: SKScene {
         hardButton?.AddCallback (callback:{
             GameManager.Instance.GameSpeedMultiplier = 0.75
             let nextScene = Level1Scene(fileNamed: "GameScene")
+            self.hardButton?.SetSelectionSprite(fileName: "redButton")
+            let sceneTransition = SKTransition.doorsOpenHorizontal(withDuration: 1.0)
             nextScene?.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            self.view!.presentScene(nextScene!, transition: sceneTransition)
         })
         
         guard let extremePlayMenuButton = childNode(withName: "extremeButton") as? MenuButton else {return}
         extremeButton = extremePlayMenuButton
         extremeButton?.AddCallback {
             GameManager.Instance.GameSpeedMultiplier = 1
+            self.extremeButton?.SetSelectionSprite(fileName: "redButton")
             let nextScene = Level1Scene(fileNamed: "GameScene")
+            let sceneTransition = SKTransition.doorsOpenHorizontal(withDuration: 1.0)
             nextScene?.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            self.view!.presentScene(nextScene!, transition: sceneTransition)
         }
         
         menuController.AddButton(menuButton: easyButton!)

@@ -59,20 +59,23 @@ class ResultsScreen: SKScene {
     fileprivate func InitializeButtons(){
         guard let playMenuButton = childNode(withName: "PlayButton") as? MenuButton else { return }
         playButton = playMenuButton
-        playButton?.SetSelectionSprite(fileName: "PlayButtonActive")
         playButton?.AddCallback (callback:{
             GameManager.Instance.Score = 0
+            self.playButton?.SetSelectionSprite(fileName: "redButton")
             let nextScene = Level1Scene(fileNamed: "GameScene")
+            let sceneTransition = SKTransition.crossFade(withDuration: 1.0)
             nextScene?.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            self.view!.presentScene(nextScene!, transition: sceneTransition)
         })
         
         guard let mainMenuButton = childNode(withName: "MenuButton") as? MenuButton else {return}
         menuButton = mainMenuButton
         menuButton?.AddCallback {
+            self.menuButton?.SetSelectionSprite(fileName: "redButton")
+            let sceneTransition = SKTransition.crossFade(withDuration: 1.0)
             let nextScene = SettingsMenu(fileNamed: "MainMenuScene")
             nextScene?.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            self.view!.presentScene(nextScene!, transition: sceneTransition)
         }
         
         menuController.AddButton(menuButton: playButton!)

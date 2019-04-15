@@ -30,7 +30,7 @@ class Shape: Actor {
     
     public var IsClicked : Bool = false
     
-    private var windowSize : CGRect
+    public var windowSize : CGRect
     
     var currentColor : Colors = .Blue
     {
@@ -87,18 +87,20 @@ class Shape: Actor {
         windowSize = UIScreen.main.bounds
         super.init(coder: aDecoder)
     }
-    func PlayFailSound(){
+ /*   func PlayFailSound(){
         let failSound = SKAction.playSoundFileNamed("strike_Sound", waitForCompletion: false)
         run(failSound)
-    }
+    }*/
     
     override func update(currentTime: TimeInterval) {
         super.update(currentTime: currentTime)
        if self.position.y < 0 - (windowSize.height + texture!.size().height / 6)
        {
             GameManager.Instance.DecreaseScore()
-            PlayFailSound()
-            self.removeFromParent()
+            let failSound = SKAction.playSoundFileNamed("strike_Sound", waitForCompletion: false)
+            run(failSound){
+                self.removeFromParent()
+            }
        }
     }
     

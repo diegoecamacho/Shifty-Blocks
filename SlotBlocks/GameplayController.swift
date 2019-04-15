@@ -24,7 +24,6 @@ class GameplayController : SKNode{
         let repearForever = SKAction.repeatForever(SKAction.sequence([waitfor,runblock]))
         
         run(repearForever)
-        
         scene.addChild(shapeSpawner!)
     }
     
